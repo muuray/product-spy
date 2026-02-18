@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #08090d;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::selection { background: rgba(99,102,241,0.4); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+@keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+.fade-up { animation: fadeUp 0.3s ease forwards; }
+.slide-in { animation: slideIn 0.25s ease forwards; }
+
+/* Responsive table → cards on mobile */
+@media (max-width: 768px) {
+  .product-grid-header { display: none !important; }
+  .product-grid-row {
+    grid-template-columns: 60px 1fr !important;
+    grid-template-rows: auto auto !important;
+    gap: 4px 12px !important;
+    padding: 14px 16px !important;
+  }
+  .product-grid-row .mobile-hide { display: none !important; }
+  .product-grid-row .mobile-meta {
+    display: flex !important;
+    grid-column: 1 / -1;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .detail-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .charts-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .detail-panel {
+    width: 400px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .product-grid-row .mobile-meta { display: none !important; }
+}
